@@ -1,3 +1,34 @@
 {
-    "nextID": 1
+    "nextID": 1,
+    "kino": {
+        "Kino Vlast": {
+            "15-17": {
+                "nextID": 1,
+                "videno": 2
+            },
+            "18-21": {
+                "nextID": 1,
+                "videno": 1
+            },
+            "22-27": {
+                "1": "4",
+                "2": "2",
+                "3": "5",
+                "nextID": 4,
+                "videno": 0
+            },
+            "28-35": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "36-42": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "43-48": {
+                "nextID": 1,
+                "videno": 0
+            }
+        }
+    }
 }

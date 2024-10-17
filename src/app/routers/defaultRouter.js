@@ -5,6 +5,7 @@ const defaultController = require('../controllers/defaultController');
 defaultRouter.post('/pridatRecenzi', (req, res) => {
 	let data = req.body;
 	console.log(data);
+	defaultController.pridatRecenzi(data);
 	res.json({"sent": true});
 });
 

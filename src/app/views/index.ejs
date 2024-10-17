@@ -37,7 +37,7 @@
                 </select>
 
                 <label for="age-group">Vaše věková skupina:</label>
-                <select id="age-group" name="age-group-second">
+                <select id="age-group" name="vek_range" required>
                     <option value="15-17">15-17</option>
                     <option value="18-21">18-21</option>
                     <option value="22-27">22-27</option>
@@ -46,31 +46,31 @@
                     <option value="43-48">43-48</option>
                 </select>
 
-                <fieldset>
-                    <legend>Vaše hodnocení místa:</legend>
-                    <div class="rating-container">
-                        <div class="rating-option">
-                            <input type="radio" id="rating1" name="rating" value="1">
-                            <label for="rating1">1</label>
-                        </div>
-                        <div class="rating-option">
-                            <input type="radio" id="rating2" name="rating" value="2">
-                            <label for="rating2">2</label>
-                        </div>
-                        <div class="rating-option">
-                            <input type="radio" id="rating3" name="rating" value="3">
-                            <label for="rating3">3</label>
-                        </div>
-                        <div class="rating-option">
-                            <input type="radio" id="rating4" name="rating" value="4">
-                            <label for="rating4">4</label>
-                        </div>
-                        <div class="rating-option">
-                            <input type="radio" id="rating5" name="rating" value="5">
-                            <label for="rating5">5</label>
-                        </div>
-                    </div>
-                </fieldset>
+                <fieldset required>
+					<legend>Vaše hodnocení místa:</legend>
+					<div class="rating-container">
+						<div class="rating-option">
+							<input type="radio" id="rating1" name="rating" value="1">
+							<label for="rating1">1</label>
+						</div>
+						<div class="rating-option">
+							<input type="radio" id="rating2" name="rating" value="2">
+							<label for="rating2">2</label>
+						</div>
+						<div class="rating-option">
+							<input type="radio" id="rating3" name="rating" value="3">
+							<label for="rating3">3</label>
+						</div>
+						<div class="rating-option">
+							<input type="radio" id="rating4" name="rating" value="4">
+							<label for="rating4">4</label>
+						</div>
+						<div class="rating-option">
+							<input type="radio" id="rating5" name="rating" value="5">
+							<label for="rating5">5</label>
+						</div>
+					</div>
+				</fieldset>
 
                 <input type="submit" value="Odeslat" style="margin-top: 1rem">
             </form>
