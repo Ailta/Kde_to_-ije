@@ -132,7 +132,7 @@ async function getData() {
 				let list = document.getElementById("age-list");
 				list.replaceChildren(); 
 				
-				if (result.averageVideno != undefined) {
+				if (result.overallAverage != undefined) {
 					if (result.sortedAgeRanges[0].age != 0){
 						console.log("b");
 						if (document.getElementById("ageRange1")){
@@ -166,7 +166,7 @@ async function getData() {
 							list.appendChild(newRange);
 						}
 					}
-					document.getElementById("overall-rating").innerHTML = result.averageVideno.toFixed(2);
+					document.getElementById("overall-rating").innerHTML = result.overallAverage.toFixed(2);
 				} else {
 					console.log("no data");
 				}

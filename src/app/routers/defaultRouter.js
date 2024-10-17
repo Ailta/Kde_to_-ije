@@ -12,15 +12,18 @@ defaultRouter.post('/pridatRecenzi', (req, res) => {
 defaultRouter.post('/dostatRecenze', (req, res) => {
 	let data = req.body;
 	console.log(data);
-	let sortedAgeRanges = defaultController.dostatRecenze(data.id);
+	let returnedValues = defaultController.dostatRecenze(data.id);
 	
-	if (sortedAgeRanges != undefined) {
+	if (returnedValues != undefined) {
+		let sortedAgeRanges = returnedValues["sortedByVideno"];
+		let overallAverage = returnedValues["overallAverageRating"];
+		
 		const totalVideno = sortedAgeRanges.reduce((sum, item) => sum + item.videno, 0);
 		const averageVideno = totalVideno / sortedAgeRanges.length;
 		
-		res.json({"sortedAgeRanges": sortedAgeRanges, "averageVideno": averageVideno});
+		res.json({"sortedAgeRanges": sortedAgeRanges, "averageVideno": averageVideno, "overallAverage": overallAverage});
 	} else {
-		res.json({"sortedAgeRanges": undefined, "averageVideno": undefined});
+		res.json({"sortedAgeRanges": undefined, "averageVideno": undefined, "overallAverage": undefined});
 	}
 });
 

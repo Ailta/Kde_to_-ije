@@ -116,6 +116,61 @@
                 "nextID": 1,
                 "videno": 0
             }
+        },
+        "Euro-Air-Camp": {
+            "15-17": {
+                "nextID": 1,
+                "videno": 1
+            },
+            "18-21": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "22-27": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "28-35": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "36-42": {
+                "1": "5",
+                "nextID": 2,
+                "videno": 0
+            },
+            "43-48": {
+                "nextID": 1,
+                "videno": 0
+            }
+        },
+        "Autokemp Na koupališti": {
+            "15-17": {
+                "nextID": 1,
+                "videno": 1
+            },
+            "18-21": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "22-27": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "28-35": {
+                "nextID": 1,
+                "videno": 1
+            },
+            "36-42": {
+                "1": "5",
+                "2": "1",
+                "nextID": 3,
+                "videno": 0
+            },
+            "43-48": {
+                "nextID": 1,
+                "videno": 0
+            }
         }
     }
 }
