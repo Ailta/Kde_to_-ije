@@ -65,7 +65,7 @@ function onFeatureClick(event) {
         
         // Zde můžete přidat kód pro načtení a zobrazení dalších informací o lokaci
         
-        modal.style.display = "block";
+        modal.style.display = "flex";
     }
 }
 
