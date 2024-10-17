@@ -1,4 +1,4 @@
-var kralovehradeckyKrajExtent = ol.proj.transformExtent([15.3, 50.1, 16.5, 50.8], 'EPSG:4326', 'EPSG:3857');
+var kralovehradeckyKrajExtent = ol.proj.transformExtent([15.1, 50.0, 16.6, 50.85], 'EPSG:4326', 'EPSG:3857');
 
 let selected = undefined;
 
