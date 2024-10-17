@@ -75,7 +75,7 @@ var tooltipElement = document.createElement('div');
 tooltipElement.className = 'tooltip';
 var tooltip = new ol.Overlay({
     element: tooltipElement,
-    offset: [0, -15],
+    offset: [0, 40],
     positioning: 'bottom-center'
 });
 map.addOverlay(tooltip);
