@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="cs" style="max-height: 100vh; max-width: 100vw">
 <head style="flex: none">
     <%- include('partials/head'); %>
@@ -32,6 +33,7 @@
 					<option value="43-48">43-48</option>
 				</select>
 
+            <form id="pridatRecenziForm" onsubmit="formSubmition(event)">
                 <label for="age-group">Vaše věková skupina:</label>
                 <select id="age-group" name="age-group-second">
                     <option value="15-17">15-17</option>

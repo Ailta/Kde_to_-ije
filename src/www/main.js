@@ -99,3 +99,31 @@ map.on('pointermove', function(evt) {
 map.on('mouseout', function() {
     tooltipElement.style.display = 'none';
 });
+
+
+
+async function formSubmition(event) {
+	event.preventDefault();
+	
+	const formData = new FormData(event.target);
+	const data = Object.fromEntries(formData.entries());
+
+	try {
+		const response = await fetch('/pridatRecenzi', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify(data),
+		});
+
+		if (response.ok) {
+			const result = await response.json();
+			console.log('Rewiev sent.')
+		} else {
+			console.log('Failed sending rewiev!')
+		}
+	} catch (error) {
+		console.error('Error:', error);
+	}
+}

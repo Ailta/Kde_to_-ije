@@ -1,0 +1,22 @@
+"kino": {
+	id: {
+		vekrange: {
+			recenze1: 5,
+			"next_ID": 2,
+			"videno": 11
+		}
+		vekrange2: {
+			recenze1: 3,
+			recenze2: 5,
+			"next_ID": 3,
+			"videno": 10
+		}
+	}
+}
+
+## JEDNA RECENZE
+hodnoceni = {
+	"vek_range": MojeVekovaSkupina,
+	"hodnoceni": 1-5,
+	"common_range": VekovaSkupinaNaTomMisteNejcastejsi
+}
