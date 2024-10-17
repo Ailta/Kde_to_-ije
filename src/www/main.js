@@ -58,6 +58,7 @@ function onFeatureClick(event) {
     if (feature) {
         console.log("Klikli jste na: " + feature.get('nazev'));
 		selected = feature.get('nazev');
+        document.getElementById("misto").innerHTML = selected;
     }
 }
 
