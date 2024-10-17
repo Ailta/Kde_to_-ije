@@ -65,7 +65,16 @@ async function onFeatureClick(event) {
         
 		selected = locationName;
 		
-		let data = {"id": selected};
+		await getData();
+		
+        // Zde můžete přidat kód pro načtení a zobrazení dalších informací o lokaci
+        
+        modal.style.display = "flex";
+    }
+}
+
+async function getData() {
+	let data = {"id": selected};
 		console.log(data);
 		
 		try {
@@ -128,11 +137,6 @@ async function onFeatureClick(event) {
 		} catch (error) {
 			console.error('Error:', error);
 		}
-		
-        // Zde můžete přidat kód pro načtení a zobrazení dalších informací o lokaci
-        
-        modal.style.display = "flex";
-    }
 }
 
 // Zavření modálního okna při kliknutí na křížek
@@ -227,4 +231,6 @@ async function formSubmition(event) {
 	} catch (error) {
 		console.error('Error:', error);
 	}
+	
+	await getData();
 }

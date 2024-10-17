@@ -116,6 +116,101 @@
                 "nextID": 1,
                 "videno": 0
             }
+        },
+        "Letní kino Tripsi Vrchlabí": {
+            "15-17": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "18-21": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "22-27": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "28-35": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "36-42": {
+                "1": "5",
+                "nextID": 2,
+                "videno": 0
+            },
+            "43-48": {
+                "nextID": 1,
+                "videno": 1
+            }
+        },
+        "Novopacké retro kino": {
+            "15-17": {
+                "nextID": 1,
+                "videno": 14
+            },
+            "18-21": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "22-27": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "28-35": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "36-42": {
+                "1": "5",
+                "2": "5",
+                "3": "5",
+                "4": "5",
+                "5": "5",
+                "6": "5",
+                "7": "5",
+                "8": "5",
+                "9": "5",
+                "10": "5",
+                "11": "5",
+                "12": "5",
+                "13": "5",
+                "14": "5",
+                "15": "5",
+                "nextID": 16,
+                "videno": 0
+            },
+            "43-48": {
+                "nextID": 1,
+                "videno": 1
+            }
+        },
+        "Letní Biograf Český Ráj": {
+            "15-17": {
+                "nextID": 1,
+                "videno": 1
+            },
+            "18-21": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "22-27": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "28-35": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "36-42": {
+                "1": "5",
+                "nextID": 2,
+                "videno": 0
+            },
+            "43-48": {
+                "nextID": 1,
+                "videno": 0
+            }
         }
     }
 }
