@@ -84,3 +84,29 @@ input[type="submit"]:hover {
 .button {
     margin-top: 20px;
 }
+
+.rating-container {
+    display: flex;
+    gap: 10px;
+}
+.rating-option {
+    flex: 1;
+    text-align: center;
+}
+.rating-option input[type="radio"] {
+    display: none;
+}
+.rating-option label {
+    display: block;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+}
+.rating-option input[type="radio"]:checked + label {
+    background-color: #4CAF50;
+    color: white;
+}
