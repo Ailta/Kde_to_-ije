@@ -1,8 +1,8 @@
 const jsondb = require("simple-json-db");
 const db = new jsondb("hodnoceni.json");
 
-if (!db.has("nextID")){
-    db.set("nextID", 1);
+if (!db.has("ageRange")){
+    db.set("ageRange", ["15-17", "18-21", "22-27", "28-35", "36-42", "43-48"]);
 }
 
 exports.pridat = (typ, id, hodnoceni) => {
@@ -34,6 +34,10 @@ exports.pridat = (typ, id, hodnoceni) => {
 }
 
 exports.ziskatDleID = (typ, id) => {
-	let mista_typu = bd.get(typ);
-	return mista_typu["kino"]["id"];
+	let mista_typu = db.get(typ);
+	return mista_typu[id];
+}
+
+exports.getAgeRanges = () => {
+	return db.get("ageRange");
 }

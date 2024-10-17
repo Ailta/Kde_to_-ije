@@ -53,7 +53,7 @@ var pointStyle = new ol.style.Style({
 var modal = document.getElementById("modal");
 var span = document.getElementsByClassName("close")[0];
 
-function onFeatureClick(event) {
+async function onFeatureClick(event) {
     var feature = map.forEachFeatureAtPixel(event.pixel, function(feature) {
         return feature;
     });
@@ -63,6 +63,33 @@ function onFeatureClick(event) {
         document.getElementById('location-name').textContent = locationName;
         document.getElementById('form-location-name').textContent = locationName;
         
+		selected = locationName;
+		
+		let data = {"id": selected};
+		console.log(data);
+		
+		try {
+			const response = await fetch('/dostatRecenze', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify(data),
+			});
+
+			if (response.ok) {
+				const result = await response.json();
+				console.log(result);
+				document.getElementById("ageRange1").innerHTML = result.sortedAgeRanges[0].age;
+				document.getElementById("ageRange2").innerHTML = result.sortedAgeRanges[2].age;
+				document.getElementById("overall-rating").innerHTML = result.averageVideno.toFixed(2);
+			} else {
+				console.log('Failed sending rewiev!');
+			}
+		} catch (error) {
+			console.error('Error:', error);
+		}
+		
         // Zde můžete přidat kód pro načtení a zobrazení dalších informací o lokaci
         
         modal.style.display = "flex";
@@ -84,36 +111,6 @@ window.onclick = function(event) {
 map.on('singleclick', onFeatureClick);
 
 // ... (zbytek kódu zůstává stejný)
-
-async function formSubmition(event) {
-    event.preventDefault();
-    
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData.entries());
-
-    data.locationName = document.getElementById('form-location-name').textContent;
-
-    try {
-        const response = await fetch('/pridatRecenzi', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(data),
-        });
-
-        if (response.ok) {
-            const result = await response.json();
-            console.log('Review sent.');
-            modal.style.display = "none";  // Zavře modální okno po úspěšném odeslání
-            // Zde můžete přidat kód pro aktualizaci zobrazených informací o lokaci
-        } else {
-            console.log('Failed sending review!');
-        }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-}
 
 var geojsonLayer = new ol.layer.Vector({
     source: new ol.source.Vector({
@@ -183,6 +180,8 @@ async function formSubmition(event) {
 		if (response.ok) {
 			const result = await response.json();
 			console.log('Rewiev sent.')
+			modal.style.display = "none";  // Zavře modální okno po úspěšném odeslání
+            // Zde můžete přidat kód pro aktualizaci zobrazených informací o lokaci
 		} else {
 			console.log('Failed sending rewiev!')
 		}
