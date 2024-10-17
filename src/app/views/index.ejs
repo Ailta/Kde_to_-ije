@@ -8,21 +8,20 @@
 <body>
 
     <div class="container">
-
         <div id="map-section" class="map-section">
-            <h3>Nejčastější věkové kategorie pro místo "bla":</h3>
-            <ul class="age-categories">
-                <li>20-29</li>
-                <li>30-39</li>
-            </ul>
-            <p>Celkové hodnocení: 3.5</p>
-
             <div id="map" class="map"></div>
         </div>
         <div id="rating-section" class="rating-section">
-
+            <div class="age-category-info">
+                <h3>Nejčastější věkové kategorie pro místo: "bla"</h3>
+                <ul class="age-categories">
+                    <li>20-29</li>
+                    <li>30-39</li>
+                </ul>
+                <p>Celkové hodnocení: 3.5</p>
+            </div>
 			
-			<form>
+			<form id="pridatRecenziForm" onsubmit="formSubmition(event)">
 				<label for="most-common-age-group">Nejčastější věková skupina na daném místě:</label>
 				<select id="most-common-age-group" name="most-common-age-group">
 					<option value="15-17">15-17</option>
@@ -33,7 +32,6 @@
 					<option value="43-48">43-48</option>
 				</select>
 
-            <form id="pridatRecenziForm" onsubmit="formSubmition(event)">
                 <label for="age-group">Vaše věková skupina:</label>
                 <select id="age-group" name="age-group-second">
                     <option value="15-17">15-17</option>
@@ -74,6 +72,6 @@
             </form>
         </div>
     </div>
-        <script type="text/javascript" src="main.js"></script>
-    </body>
+    <script type="text/javascript" src="main.js"></script>
+</body>
 </html>
