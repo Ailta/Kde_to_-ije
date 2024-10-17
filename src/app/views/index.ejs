@@ -2,17 +2,102 @@
     <head style="flex: none">
         <%- include('partials/head'); %>
 		<style>
+            .map-and-form-container {
+                display: flex;
+                height: 100%;
+            }
+
 			.map {
-				height: 100%;
-				width: 100%;
-			}
-		</style>
+                width: 80%;
+                height: 100%;
+            }
+
+            .left-section {
+                width: 35%;
+                padding: 20px;
+                background-color: #f1f1f1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                border-right: 1px solid #ccc;
+            }
+
+            .left-section h3 {
+                margin-bottom: 10px;
+            }
+
+            .age-groups {
+                display: flex;
+                justify-content: space-between;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .age-groups div {
+                background-color: #ddd;
+                padding: 10px;
+                text-align: center;
+                width: 30%;
+            }
+
+            .right-section {
+                width: 65%;
+                padding: 20px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            label, select, input {
+                margin-bottom: 10px;
+            }
+
+        </style>
+
 		<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css">
     </head>
     <body style="display: flex; flex-direction: column; height: 100vh">
         <%- include('partials/header'); %>
-        <div id="map" class="map"></div>
+
+        <div class="map-and-form-container">
+
+            <div id="map" class="map"></div>
+
+            <div class="right-section">
+                <form>
+                    <label for="age-group">Vaše věková skupina:</label>
+                    <select id="age-group" name="age-group">
+                        <option value="20-29">20-29</option>
+                        <option value="30-39">30-39</option>
+                        <option value="40-49">40-49</option>
+                    </select>
+
+                    <label for="rating">Vaše hodnocení místa:</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5">
+
+                    <label for="common-age-group">Nejčastější věková skupina na daném místě:</label>
+                    <select id="common-age-group" name="common-age-group">
+                        <option value="20-29">20-29</option>
+                        <option value="30-39">30-39</option>
+                        <option value="40-49">40-49</option>
+                    </select>
+
+                    <input type="submit" value="Odeslat">
+                </form>
+            </div>
+        </div>
+
+
+
 		<script type="text/javascript">
 			var kralovehradeckyKrajExtent = ol.proj.transformExtent([15.3, 50.1, 16.5, 50.8], 'EPSG:4326', 'EPSG:3857');
 
