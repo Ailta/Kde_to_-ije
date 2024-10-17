@@ -2,11 +2,41 @@
 <html lang="cs" style="max-height: 100vh; max-width: 100vw">
     <head style="flex: none">
         <%- include('partials/head'); %>
+		<style>
+			.map {
+				height: 100%;
+				width: 100%;
+			}
+		</style>
+		<script src="https://cdn.maptiler.com/ol/v6.0.0/ol.js"></script>
     </head>
     <body style="display: flex; flex-direction: column; height: 100vh">
         <%- include('partials/header'); %>
-        <main>
-            
-        </main>
+        <div id="map" class="map"></div>
+		<script type="text/javascript">
+			var map = new ol.Map({
+				target: 'map',
+				layers: [
+					new ol.layer.Tile({
+						source: new ol.source.OSM()
+					})
+				],
+				view: new ol.View({center: ol.proj.fromLonLat([15, 50]),
+				zoom: 7
+				})
+			});
+			
+			var point = new ol.layer.Vector({
+				 source: new ol.source.Vector({
+					 features: [
+						 new ol.Feature({
+							 geometry: new ol.geom.Point(ol.proj.fromLonLat([12.33816, 45.43393]))
+						 })
+					 ]
+				 }),
+			 });
+
+			map.addLayer(point);
+		</script>
     </body>
 </html>
