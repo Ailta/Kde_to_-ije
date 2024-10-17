@@ -29,11 +29,29 @@
                     center: ol.proj.fromLonLat([15.48, 50.24]),
                     zoom: 9,
                     extent: kralovehradeckyKrajExtent,
-                    constrainOnlyCenter: true,
                     minZoom: 8,
                     maxZoom: 18
                 })
             });
+
+            // Funkce pro omezení pohybu mapy
+            function constrainView(event) {
+                var view = event.map.getView();
+                var center = view.getCenter();
+                var currentExtent = view.calculateExtent(map.getSize());
+                var boundingExtent = kralovehradeckyKrajExtent;
+
+                if (!ol.extent.containsExtent(boundingExtent, currentExtent)) {
+                    var newCenter = [
+                        Math.max(Math.min(center[0], boundingExtent[2]), boundingExtent[0]),
+                        Math.max(Math.min(center[1], boundingExtent[3]), boundingExtent[1])
+                    ];
+                    view.setCenter(newCenter);
+                }
+            }
+
+            // Přidání posluchače událostí pro omezení pohybu
+            map.on('moveend', constrainView);
 
             // Definice vlastního stylu pro body
             var pointStyle = new ol.style.Style({
@@ -66,7 +84,7 @@
                     url: 'https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Kina/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson',
                     format: new ol.format.GeoJSON()
                 }),
-                style: pointStyle  // Použití vlastního stylu pro všechny prvky v této vrstvě
+                style: pointStyle
             });
 
             map.addLayer(geojsonLayer);
