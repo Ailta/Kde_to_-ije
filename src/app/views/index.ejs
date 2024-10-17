@@ -1,181 +1,153 @@
 <html lang="cs" style="max-height: 100vh; max-width: 100vw">
-    <head style="flex: none">
-        <%- include('partials/head'); %>
-		<style>
-            .map-and-form-container {
-                display: flex;
-                height: 100%;
-            }
+<head style="flex: none">
+    <%- include('partials/head'); %>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            height: 100vh;
+            width: 100vw;
+        }
 
-			.map {
-                width: 80%;
-                height: 100%;
-            }
+        .map-section {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: #f0f0f0;
+        }
 
-            .left-section {
-                width: 35%;
-                padding: 20px;
-                background-color: #f1f1f1;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                border-right: 1px solid #ccc;
-            }
+        .map {
+            width: 100%;
+            height: 80%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
 
-            .left-section h3 {
-                margin-bottom: 10px;
-            }
+        .rating-section {
+            width: 50%;
+            padding: 40px;
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: -4px 0 8px rgba(0, 0, 0, 0.1);
+        }
 
-            .age-groups {
-                display: flex;
-                justify-content: space-between;
-                width: 100%;
-                margin-bottom: 10px;
-            }
+        .rating-section form {
+            width: 100%;
+            max-width: 400px;
+            padding: 30px;
+            background-color: #fafafa;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 15px;
+        }
 
-            .age-groups div {
-                background-color: #ddd;
-                padding: 10px;
-                text-align: center;
-                width: 30%;
-            }
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
 
-            .right-section {
-                width: 65%;
-                padding: 20px;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-            }
+        .age-categories {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: #555;
+        }
 
-            form {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
 
-            label, select, input {
-                margin-bottom: 10px;
-            }
+        select, input[type="number"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
 
-        </style>
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
 
-		<script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css">
-    </head>
-    <body style="display: flex; flex-direction: column; height: 100vh">
-        <%- include('partials/header'); %>
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
 
-        <div class="map-and-form-container">
+        .button {
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div id="map-section" class="map-section">
+            <h3>Nejčastější věkové kategorie pro místo "bla":</h3>
+            <ul class="age-categories">
+                <li>20-29</li>
+                <li>30-39</li>
+            </ul>
+            <p>Celkové hodnocení: 3.5</p>
 
             <div id="map" class="map"></div>
-
-            <div class="right-section">
-                <form>
-                    <label for="age-group">Vaše věková skupina:</label>
-                    <select id="age-group" name="age-group">
-                        <option value="20-29">20-29</option>
-                        <option value="30-39">30-39</option>
-                        <option value="40-49">40-49</option>
-                    </select>
-
-                    <label for="rating">Vaše hodnocení místa:</label>
-                    <input type="number" id="rating" name="rating" min="1" max="5">
-
-                    <label for="common-age-group">Nejčastější věková skupina na daném místě:</label>
-                    <select id="common-age-group" name="common-age-group">
-                        <option value="20-29">20-29</option>
-                        <option value="30-39">30-39</option>
-                        <option value="40-49">40-49</option>
-                    </select>
-
-                    <input type="submit" value="Odeslat">
-                </form>
-            </div>
         </div>
 
+        <div id="rating-section" class="rating-section">
+            <h3>Nejčastější věková kategorie na daném místě: 30-39</h3>
 
+            <form>
+                <label for="age-group">Vaše věková skupina:</label>
+                <select id="age-group" name="age-group">
+                    <option value="20-29">20-29</option>
+                    <option value="30-39">30-39</option>
+                    <option value="40-49">40-49</option>
+                </select>
 
-		<script type="text/javascript">
-			var kralovehradeckyKrajExtent = ol.proj.transformExtent([15.3, 50.1, 16.5, 50.8], 'EPSG:4326', 'EPSG:3857');
+                <label for="rating">Vaše hodnocení místa:</label>
+                <input type="number" id="rating" name="rating" min="1" max="5">
 
-            var map = new ol.Map({
-                target: 'map',
-                layers: [
-                    new ol.layer.Tile({
-                        source: new ol.source.XYZ({
-                            url: 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=8YRNEfnZb0K6syftXksQ'
-                        })
-                    })
-                ],
-                view: new ol.View({
-                    center: ol.proj.fromLonLat([15.48, 50.24]),
-                    zoom: 9,
-                    extent: kralovehradeckyKrajExtent,
-                    minZoom: 8,
-                    maxZoom: 18
-                })
-            });
+                <input type="submit" value="Odeslat">
+            </form>
+        </div>
+    </div>
 
-            // Funkce pro omezení pohybu mapy
-            function constrainView(event) {
-                var view = event.map.getView();
-                var center = view.getCenter();
-                var currentExtent = view.calculateExtent(map.getSize());
-                var boundingExtent = kralovehradeckyKrajExtent;
+    <script type="text/javascript">
 
-                if (!ol.extent.containsExtent(boundingExtent, currentExtent)) {
-                    var newCenter = [
-                        Math.max(Math.min(center[0], boundingExtent[2]), boundingExtent[0]),
-                        Math.max(Math.min(center[1], boundingExtent[3]), boundingExtent[1])
-                    ];
-                    view.setCenter(newCenter);
-                }
-            }
+        var kralovehradeckyKrajExtent = ol.proj.transformExtent([15.3, 50.1, 16.5, 50.8], 'EPSG:4326', 'EPSG:3857');
 
-            // Přidání posluchače událostí pro omezení pohybu
-            map.on('moveend', constrainView);
-
-            // Definice vlastního stylu pro body
-            var pointStyle = new ol.style.Style({
-                image: new ol.style.Circle({
-                    radius: 7,
-                    fill: new ol.style.Fill({
-                        color: 'red'
-                    }),
-                    stroke: new ol.style.Stroke({
-                        color: 'white',
-                        width: 2
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.XYZ({
+                        url: 'https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=8YRNEfnZb0K6syftXksQ'
                     })
                 })
-            });
-
-            // Funkce pro zpracování kliknutí na prvky
-            function onFeatureClick(event) {
-                var feature = map.forEachFeatureAtPixel(event.pixel, function(feature) {
-                    return feature;
-                });
-
-                if (feature) {
-                    alert("Klikli jste na: " + feature.get('name'));
-                }
-            }
-
-            // Načtení GeoJSON dat s použitím vlastního stylu
-            var geojsonLayer = new ol.layer.Vector({
-                source: new ol.source.Vector({
-                    url: 'https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Kina/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson',
-                    format: new ol.format.GeoJSON()
-                }),
-                style: pointStyle
-            });
-
-            map.addLayer(geojsonLayer);
-
-            // Přidání posluchače událostí pro kliknutí na mapu
-            map.on('singleclick', onFeatureClick);
-        </script>
-    </body>
+            ],
+            view: new ol.View({
+                center: ol.proj.fromLonLat([15.48, 50.24]),
+                zoom: 9,
+                extent: kralovehradeckyKrajExtent,
+                constrainOnlyCenter: true,
+                minZoom: 8,
+                maxZoom: 18
+            })
+        });
+    </script>
+</body>
 </html>
