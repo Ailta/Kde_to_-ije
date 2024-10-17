@@ -50,6 +50,45 @@ var pointStyle = new ol.style.Style({
     })
 });
 
+var pointStyle1 = new ol.style.Style({
+    image: new ol.style.Circle({
+        radius: 7,
+        fill: new ol.style.Fill({
+            color: 'blue'
+        }),
+        stroke: new ol.style.Stroke({
+            color: 'white',
+            width: 2
+        })
+    })
+});
+
+var pointStyle2 = new ol.style.Style({
+    image: new ol.style.Circle({
+        radius: 7,
+        fill: new ol.style.Fill({
+            color: 'green'
+        }),
+        stroke: new ol.style.Stroke({
+            color: 'white',
+            width: 2
+        })
+    })
+});
+
+var pointStyle3 = new ol.style.Style({
+    image: new ol.style.Circle({
+        radius: 7,
+        fill: new ol.style.Fill({
+            color: 'orange'
+        }),
+        stroke: new ol.style.Stroke({
+            color: 'white',
+            width: 2
+        })
+    })
+});
+
 var modal = document.getElementById("modal");
 var span = document.getElementsByClassName("close")[0];
 
@@ -157,10 +196,40 @@ map.on('singleclick', onFeatureClick);
 
 var geojsonLayer = new ol.layer.Vector({
     source: new ol.source.Vector({
-        url: 'https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Kina/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson',
+        url: 'https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Hudební_kluby_a_festival_parky/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson',
         format: new ol.format.GeoJSON()
     }),
     style: pointStyle
+});
+
+map.addLayer(geojsonLayer);
+
+var geojsonLayer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+        url: 'https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Kina/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson',
+        format: new ol.format.GeoJSON()
+    }),
+    style: pointStyle1
+});
+
+map.addLayer(geojsonLayer);
+
+var geojsonLayer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+        url: 'https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Letní_koupání/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson',
+        format: new ol.format.GeoJSON()
+    }),
+    style: pointStyle2
+});
+
+map.addLayer(geojsonLayer);
+
+var geojsonLayer = new ol.layer.Vector({
+    source: new ol.source.Vector({
+        url: 'https://services6.arcgis.com/ogJAiK65nXL1mXAW/arcgis/rest/services/Zábavní_centra/FeatureServer/0/query?outFields=*&where=1%3D1&f=geojson',
+        format: new ol.format.GeoJSON()
+    }),
+    style: pointStyle3
 });
 
 map.addLayer(geojsonLayer);
