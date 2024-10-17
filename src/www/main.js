@@ -50,15 +50,68 @@ var pointStyle = new ol.style.Style({
     })
 });
 
+var modal = document.getElementById("modal");
+var span = document.getElementsByClassName("close")[0];
+
 function onFeatureClick(event) {
     var feature = map.forEachFeatureAtPixel(event.pixel, function(feature) {
         return feature;
     });
 
     if (feature) {
-        console.log("Klikli jste na: " + feature.get('nazev'));
-		selected = feature.get('nazev');
-        document.getElementById("misto").innerHTML = selected;
+        var locationName = feature.get('nazev') || 'Neznámé místo';
+        document.getElementById('location-name').textContent = locationName;
+        document.getElementById('form-location-name').textContent = locationName;
+        
+        // Zde můžete přidat kód pro načtení a zobrazení dalších informací o lokaci
+        
+        modal.style.display = "block";
+    }
+}
+
+// Zavření modálního okna při kliknutí na křížek
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// Zavření modálního okna při kliknutí mimo okno
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+
+map.on('singleclick', onFeatureClick);
+
+// ... (zbytek kódu zůstává stejný)
+
+async function formSubmition(event) {
+    event.preventDefault();
+    
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData.entries());
+
+    data.locationName = document.getElementById('form-location-name').textContent;
+
+    try {
+        const response = await fetch('/pridatRecenzi', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            console.log('Review sent.');
+            modal.style.display = "none";  // Zavře modální okno po úspěšném odeslání
+            // Zde můžete přidat kód pro aktualizaci zobrazených informací o lokaci
+        } else {
+            console.log('Failed sending review!');
+        }
+    } catch (error) {
+        console.error('Error:', error);
     }
 }
 

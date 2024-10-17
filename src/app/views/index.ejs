@@ -1,77 +1,82 @@
 <!DOCTYPE html>
-<html lang="cs" style="max-height: 100vh; max-width: 100vw">
-<head style="flex: none">
+<html lang="cs" style="height: 100%; width: 100%;">
+<head>
     <%- include('partials/head'); %>
     <script src="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/build/ol.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/openlayers/openlayers.github.io@master/en/v6.15.1/css/ol.css">
 </head>
-<body>
-
-    <div class="container">
-        <div id="map-section" class="map-section">
-            <div id="map" class="map"></div>
-        </div>
-        <div id="rating-section" class="rating-section">
-            <div class="age-category-info">
-				<h3>Nejčastější věkové kategorie pro místo:</h3>
-                <h3 id="misto">"Kliknete na místo"</h3>
-                <ul class="age-categories">
-					
-                </ul>
-                <p>Celkové hodnocení: 3.5</p>
+<body style="height: 100%; width: 100%; margin: 0; padding: 0;">
+    <div id="map" class="map" style="height: 100%; width: 100%;"></div>
+    
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="location-info">
+                <h3>Informace o místě: <span id="location-name"></span></h3>
+                <div class="age-category-info">
+                    <h4>Nejčastější věkové kategorie pro toto místo:</h4>
+                    <ul class="age-categories">
+                        <li>20-29</li>
+                        <li>30-39</li>
+                    </ul>
+                    <p>Celkové hodnocení: <span id="overall-rating">3.5</span></p>
+                </div>
             </div>
-			
-			<form id="pridatRecenziForm" onsubmit="formSubmition(event)">
-				<label for="most-common-age-group">Nejčastější věková skupina na daném místě:</label>
-				<select id="most-common-age-group" name="most-common-age-group">
-					<option value="15-17">15-17</option>
-					<option value="18-21">18-21</option>
-					<option value="22-27">22-27</option>
-					<option value="28-35">28-35</option>
-					<option value="36-42">36-42</option>
-					<option value="43-48">43-48</option>
-				</select>
+            
+            <form id="pridatRecenziForm" onsubmit="formSubmition(event)">
+                <h3>Hodnocení pro: <span id="form-location-name"></span></h3>
+                
+                <label for="most-common-age-group">Nejčastější věková skupina na daném místě:</label>
+                <select id="most-common-age-group" name="most-common-age-group">
+                    <option value="15-17">15-17</option>
+                    <option value="18-21">18-21</option>
+                    <option value="22-27">22-27</option>
+                    <option value="28-35">28-35</option>
+                    <option value="36-42">36-42</option>
+                    <option value="43-48">43-48</option>
+                </select>
 
                 <label for="age-group">Vaše věková skupina:</label>
                 <select id="age-group" name="age-group-second">
                     <option value="15-17">15-17</option>
-					<option value="18-21">18-21</option>
-					<option value="22-27">22-27</option>
-					<option value="28-35">28-35</option>
-					<option value="36-42">36-42</option>
-					<option value="43-48">43-48</option>
+                    <option value="18-21">18-21</option>
+                    <option value="22-27">22-27</option>
+                    <option value="28-35">28-35</option>
+                    <option value="36-42">36-42</option>
+                    <option value="43-48">43-48</option>
                 </select>
 
                 <fieldset>
-					<legend>Vaše hodnocení místa:</legend>
-					<div class="rating-container">
-						<div class="rating-option">
-							<input type="radio" id="rating1" name="rating" value="1">
-							<label for="rating1">1</label>
-						</div>
-						<div class="rating-option">
-							<input type="radio" id="rating2" name="rating" value="2">
-							<label for="rating2">2</label>
-						</div>
-						<div class="rating-option">
-							<input type="radio" id="rating3" name="rating" value="3">
-							<label for="rating3">3</label>
-						</div>
-						<div class="rating-option">
-							<input type="radio" id="rating4" name="rating" value="4">
-							<label for="rating4">4</label>
-						</div>
-						<div class="rating-option">
-							<input type="radio" id="rating5" name="rating" value="5">
-							<label for="rating5">5</label>
-						</div>
-					</div>
-				</fieldset>
+                    <legend>Vaše hodnocení místa:</legend>
+                    <div class="rating-container">
+                        <div class="rating-option">
+                            <input type="radio" id="rating1" name="rating" value="1">
+                            <label for="rating1">1</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="rating2" name="rating" value="2">
+                            <label for="rating2">2</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="rating3" name="rating" value="3">
+                            <label for="rating3">3</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="rating4" name="rating" value="4">
+                            <label for="rating4">4</label>
+                        </div>
+                        <div class="rating-option">
+                            <input type="radio" id="rating5" name="rating" value="5">
+                            <label for="rating5">5</label>
+                        </div>
+                    </div>
+                </fieldset>
 
-				<input type="submit" value="Odeslat" style="margin-top: 1rem">
+                <input type="submit" value="Odeslat" style="margin-top: 1rem">
             </form>
         </div>
     </div>
+    
     <script type="text/javascript" src="main.js"></script>
 </body>
 </html>
