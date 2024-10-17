@@ -41,10 +41,10 @@ var pointStyle = new ol.style.Style({
     image: new ol.style.Circle({
         radius: 7,
         fill: new ol.style.Fill({
-            color: 'red'
+            color: 'white'
         }),
         stroke: new ol.style.Stroke({
-            color: 'white',
+            color: 'red',
             width: 2
         })
     })
@@ -54,10 +54,10 @@ var pointStyle1 = new ol.style.Style({
     image: new ol.style.Circle({
         radius: 7,
         fill: new ol.style.Fill({
-            color: 'blue'
+            color: 'white'
         }),
         stroke: new ol.style.Stroke({
-            color: 'white',
+            color: 'blue',
             width: 2
         })
     })
@@ -67,10 +67,10 @@ var pointStyle2 = new ol.style.Style({
     image: new ol.style.Circle({
         radius: 7,
         fill: new ol.style.Fill({
-            color: 'green'
+            color: 'white'
         }),
         stroke: new ol.style.Stroke({
-            color: 'white',
+            color: 'green',
             width: 2
         })
     })
@@ -80,10 +80,10 @@ var pointStyle3 = new ol.style.Style({
     image: new ol.style.Circle({
         radius: 7,
         fill: new ol.style.Fill({
-            color: 'orange'
+            color: 'white'
         }),
         stroke: new ol.style.Stroke({
-            color: 'white',
+            color: 'orange',
             width: 2
         })
     })
