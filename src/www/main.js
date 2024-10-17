@@ -1,5 +1,7 @@
 var kralovehradeckyKrajExtent = ol.proj.transformExtent([15.3, 50.1, 16.5, 50.8], 'EPSG:4326', 'EPSG:3857');
 
+let selected = undefined;
+
 var map = new ol.Map({
     target: 'map',
     layers: [
@@ -54,7 +56,8 @@ function onFeatureClick(event) {
     });
 
     if (feature) {
-        alert("Klikli jste na: " + feature.get('nazev'));
+        console.log("Klikli jste na: " + feature.get('nazev'));
+		selected = feature.get('nazev');
     }
 }
 
@@ -104,9 +107,15 @@ map.on('mouseout', function() {
 
 async function formSubmition(event) {
 	event.preventDefault();
+	if (selected == undefined){
+		console.log("Place not selected!");
+		alert("Označte místo.");
+		return;
+	}
 	
 	const formData = new FormData(event.target);
-	const data = Object.fromEntries(formData.entries());
+	let data = Object.fromEntries(formData.entries());
+	data["id"] = selected;
 
 	try {
 		const response = await fetch('/pridatRecenzi', {
