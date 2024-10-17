@@ -14,10 +14,14 @@ defaultRouter.post('/dostatRecenze', (req, res) => {
 	console.log(data);
 	let sortedAgeRanges = defaultController.dostatRecenze(data.id);
 	
-	const totalVideno = sortedAgeRanges.reduce((sum, item) => sum + item.videno, 0);
-	const averageVideno = totalVideno / sortedAgeRanges.length;
-	
-	res.json({"sortedAgeRanges": sortedAgeRanges, "averageVideno": averageVideno});
+	if (sortedAgeRanges != undefined) {
+		const totalVideno = sortedAgeRanges.reduce((sum, item) => sum + item.videno, 0);
+		const averageVideno = totalVideno / sortedAgeRanges.length;
+		
+		res.json({"sortedAgeRanges": sortedAgeRanges, "averageVideno": averageVideno});
+	} else {
+		res.json({"sortedAgeRanges": undefined, "averageVideno": undefined});
+	}
 });
 
 defaultRouter.get('/', (req, res) => {

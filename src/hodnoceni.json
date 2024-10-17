@@ -10,7 +10,12 @@
     "kino": {
         "Kino Vlast": {
             "15-17": {
-                "nextID": 1,
+                "1": "4",
+                "2": "4",
+                "3": "4",
+                "4": "4",
+                "5": "4",
+                "nextID": 6,
                 "videno": 18
             },
             "18-21": {
@@ -43,11 +48,65 @@
                 "23": "1",
                 "24": "5",
                 "nextID": 25,
-                "videno": 3
+                "videno": 8
             },
             "28-35": {
                 "nextID": 1,
                 "videno": 2
+            },
+            "36-42": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "43-48": {
+                "nextID": 1,
+                "videno": 0
+            }
+        },
+        "Kino Vesmír": {
+            "15-17": {
+                "1": "3",
+                "nextID": 2,
+                "videno": 0
+            },
+            "18-21": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "22-27": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "28-35": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "36-42": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "43-48": {
+                "nextID": 1,
+                "videno": 1
+            }
+        },
+        "Kulturní dům Střelnice": {
+            "15-17": {
+                "1": "4",
+                "nextID": 2,
+                "videno": 0
+            },
+            "18-21": {
+                "nextID": 1,
+                "videno": 0
+            },
+            "22-27": {
+                "nextID": 1,
+                "videno": 1
+            },
+            "28-35": {
+                "nextID": 1,
+                "videno": 0
             },
             "36-42": {
                 "nextID": 1,

@@ -10,16 +10,18 @@ exports.dostatRecenze = (id) => {
 	const ageRange = databaze.getAgeRanges();
 	
 	console.log(id);
+	if (place != undefined) {
+		const ageRangesWithVideno = ageRange.map(age => ({
+			age: age,
+			videno: place[age].videno
+		}));
 
-	const ageRangesWithVideno = ageRange.map(age => ({
-		age: age,
-		videno: place[age].videno
-	}));
-
-	// Sort the array based on videno values in descending order
-	const sortedByVideno = ageRangesWithVideno.sort((a, b) => b.videno - a.videno);
+		// Sort the array based on videno values in descending order
+		const sortedByVideno = ageRangesWithVideno.sort((a, b) => b.videno - a.videno);
+		
+		console.log(sortedByVideno);
+		return sortedByVideno;
+	}
 	
-	console.log(sortedByVideno);
-	
-	return sortedByVideno;
+	return undefined;
 }

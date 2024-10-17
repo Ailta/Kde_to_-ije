@@ -80,9 +80,48 @@ async function onFeatureClick(event) {
 			if (response.ok) {
 				const result = await response.json();
 				console.log(result);
-				document.getElementById("ageRange1").innerHTML = result.sortedAgeRanges[0].age;
-				document.getElementById("ageRange2").innerHTML = result.sortedAgeRanges[2].age;
-				document.getElementById("overall-rating").innerHTML = result.averageVideno.toFixed(2);
+				
+				let list = document.getElementById("age-list");
+				list.replaceChildren(); 
+				
+				if (result.averageVideno != undefined) {
+					if (result.sortedAgeRanges[0].age != 0){
+						console.log("b");
+						if (document.getElementById("ageRange1")){
+							console.log("brik");
+							document.getElementById("ageRange1").innerHTML = result.sortedAgeRanges[0].age;
+						} else {
+							console.log("brikule");
+							let newRange = document.createElement("li");
+							newRange.setAttribute("id", "ageRange1");
+							newRange.innerHTML = result.sortedAgeRanges[0].age;
+							list.appendChild(newRange);
+						}	
+					}
+					if (result.sortedAgeRanges[1].age != 0){
+						if (document.getElementById("ageRange2")){
+							document.getElementById("ageRange2").innerHTML = result.sortedAgeRanges[1].age;
+						} else {
+							let newRange = document.createElement("li");
+							newRange.setAttribute("id", "ageRange2");
+							newRange.innerHTML = result.sortedAgeRanges[1].age;
+							list.appendChild(newRange);
+						}
+					}
+					if (result.sortedAgeRanges[2].age != 0){
+						if (document.getElementById("ageRange3")){
+							document.getElementById("ageRange3").innerHTML = result.sortedAgeRanges[2].age;
+						} else {
+							let newRange = document.createElement("li");
+							newRange.setAttribute("id", "ageRange3");
+							newRange.innerHTML = result.sortedAgeRanges[2].age;
+							list.appendChild(newRange);
+						}
+					}
+					document.getElementById("overall-rating").innerHTML = result.averageVideno.toFixed(2);
+				} else {
+					console.log("no data");
+				}
 			} else {
 				console.log('Failed sending rewiev!');
 			}
@@ -180,7 +219,7 @@ async function formSubmition(event) {
 		if (response.ok) {
 			const result = await response.json();
 			console.log('Rewiev sent.')
-			modal.style.display = "none";  // Zavře modální okno po úspěšném odeslání
+			//modal.style.display = "none";  // Zavře modální okno po úspěšném odeslání
             // Zde můžete přidat kód pro aktualizaci zobrazených informací o lokaci
 		} else {
 			console.log('Failed sending rewiev!')
