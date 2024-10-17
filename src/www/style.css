@@ -243,3 +243,28 @@ body, html {
     display: flex;
     flex-direction: column;
 }
+
+.btn {
+    width: 10rem;
+    height: 1.5rem;
+    border-radius: 1rem;
+    border: solid black 0;
+    outline: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+    margin-bottom: 0.5rem;
+  }
+
+.btn:hover {
+background-color: #ddd;
+}
+
+.btn:active {
+background-color: #666;
+color: white;
+}
+
+.btn:focus {
+    background-color: #b4d2f1;
+}
+
