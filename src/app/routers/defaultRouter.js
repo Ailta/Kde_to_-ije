@@ -17,13 +17,16 @@ defaultRouter.post('/dostatRecenze', (req, res) => {
 	if (returnedValues != undefined) {
 		let sortedAgeRanges = returnedValues["sortedByVideno"];
 		let overallAverage = returnedValues["overallAverageRating"];
+		let ageRangesWithRating = returnedValues["ageRangesWithRating"];
+		
+		console.log(returnedValues);
 		
 		const totalVideno = sortedAgeRanges.reduce((sum, item) => sum + item.videno, 0);
 		const averageVideno = totalVideno / sortedAgeRanges.length;
 		
-		res.json({"sortedAgeRanges": sortedAgeRanges, "averageVideno": averageVideno, "overallAverage": overallAverage});
+		res.json({"sortedAgeRanges": sortedAgeRanges, "averageVideno": averageVideno, "overallAverage": overallAverage, "ageRangesWithRating": ageRangesWithRating});
 	} else {
-		res.json({"sortedAgeRanges": undefined, "averageVideno": undefined, "overallAverage": undefined});
+		res.json({"sortedAgeRanges": undefined, "averageVideno": undefined, "overallAverage": undefined, "ageRangesWithRating": undefined});
 	}
 });
 

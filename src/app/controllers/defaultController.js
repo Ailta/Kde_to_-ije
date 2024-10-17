@@ -48,7 +48,7 @@ exports.dostatRecenze = (id) => {
 		// Sort the array based on videno values in descending order
 		const sortedByVideno = ageRangesWithVideno.sort((a, b) => b.videno - a.videno);
 		
-		return {"sortedByVideno": sortedByVideno, "overallAverageRating": overallAverageRating};
+		return {"sortedByVideno": sortedByVideno, "overallAverageRating": overallAverageRating, "ageRangesWithRating": ageRangesWithRating};
 	}
 	
 	return undefined;

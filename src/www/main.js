@@ -1,6 +1,7 @@
 var kralovehradeckyKrajExtent = ol.proj.transformExtent([15.1, 50.0, 16.6, 50.85], 'EPSG:4326', 'EPSG:3857');
 
 let selected = undefined;
+let results = undefined;
 
 var map = new ol.Map({
     target: 'map',
@@ -112,6 +113,35 @@ async function onFeatureClick(event) {
     }
 }
 
+function setAverage(btn){
+	document.getElementById("overall-rating");
+	
+	console.log(results.ageRangesWithRating[0].averageRating.toFixed(2));
+	if (btn.innerHTML == "15-17"){
+		document.getElementById("overall-rating").innerHTML = results.ageRangesWithRating[0].averageRating.toFixed(2);
+	}
+	if (btn.innerHTML == "18-21"){
+		document.getElementById("overall-rating").innerHTML = results.ageRangesWithRating[1].averageRating.toFixed(2);
+	}
+	if (btn.innerHTML == "22-27"){
+		document.getElementById("overall-rating").innerHTML = results.ageRangesWithRating[2].averageRating.toFixed(2);
+	}
+	if (btn.innerHTML == "28-35"){
+		document.getElementById("overall-rating").innerHTML = results.ageRangesWithRating[3].averageRating.toFixed(2);
+	}
+	if (btn.innerHTML == "36-42"){
+		document.getElementById("overall-rating").innerHTML = results.ageRangesWithRating[4].averageRating.toFixed(2);
+	}
+	if (btn.innerHTML == "43-48"){
+		document.getElementById("overall-rating").innerHTML = results.ageRangesWithRating[5].averageRating.toFixed(2);
+	}
+	if (btn.innerHTML == "Celkem"){
+		document.getElementById("overall-rating").innerHTML = results.overallAverage.toFixed(2);
+	}
+	
+	//
+}
+
 async function getData() {
 	let data = {"id": selected};
 		console.log(data);
@@ -133,6 +163,8 @@ async function getData() {
 				list.replaceChildren(); 
 				
 				if (result.overallAverage != undefined) {
+					results = result;
+					
 					if (result.sortedAgeRanges[0].age != 0){
 						console.log("b");
 						if (document.getElementById("ageRange1")){
