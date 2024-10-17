@@ -159,10 +159,10 @@
                 });
 
                 if (feature) {
-                    alert("Klikli jste na: " + feature.get('name'));
+                    alert("Klikli jste na: " + feature.get('nazev'));
                 }
             }
-
+			
             // Načtení GeoJSON dat s použitím vlastního stylu
             var geojsonLayer = new ol.layer.Vector({
                 source: new ol.source.Vector({
@@ -171,7 +171,7 @@
                 }),
                 style: pointStyle
             });
-
+			
             map.addLayer(geojsonLayer);
 
             // Přidání posluchače událostí pro kliknutí na mapu
